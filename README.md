@@ -14,9 +14,9 @@ Text Code Sharer is a web application for sharing text and code snippets with ea
 8. License(#license)
 
 ## Features
-* Create, read, update, and delete (CRUD) text/code snippets.
-* Snippet expiration and one-time views.
-* Search and categorize snippets.
+* Create, read, update, and delete (CRUD) text/code document.
+* Document expiration and one-time views.
+* Search and categorize document.
 * Caching with Redis for faster performance.
 
 ## Tech Stack
