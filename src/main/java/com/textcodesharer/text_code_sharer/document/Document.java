@@ -2,17 +2,23 @@ package com.textcodesharer.text_code_sharer.document;
 
 import java.util.Arrays;
 
+import jakarta.annotation.Nonnull;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class Document {
 	
 	private @Id
-	@GeneratedValue Long id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	Long id;
 
 	private String title;
+	
+	@Column(nullable=false)
 	private String content;
 	private String category;
 	private String expiration;
@@ -23,9 +29,10 @@ public class Document {
 	
 	Document() {}
 	
-	Document(String title, String category) {
+	Document(String title, String category, String content) {
 		this.title = title;
 		this.category = category;
+		this.content = content;
 	}
 
 	public Long getId() {

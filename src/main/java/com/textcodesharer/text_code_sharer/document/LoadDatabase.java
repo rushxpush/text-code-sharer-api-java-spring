@@ -10,12 +10,14 @@ public class LoadDatabase {
 	
 	private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
 	
+	/*
 	CommandLineRunner initDatabase(DocumentRepository repository) {
 		return args -> {
-			log.info("Preloading " + repository.save(new Document("Bitcoin prices go up", "Cryptocurrency")));
-			log.info("Preloading " + repository.save(new Document("I like the Super Nintendo", "Gaming")));
+			log.info("Preloading " + repository.save(new Document("Bitcoin prices go up", "Cryptocurrency", "Some content...")));
+			log.info("Preloading " + repository.save(new Document("I like the Super Nintendo", "Gaming", "Some other content...")));
 		};
 		
 	}
+	*/
 
 }

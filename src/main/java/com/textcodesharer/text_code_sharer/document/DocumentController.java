@@ -15,43 +15,35 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/document")
 public class DocumentController {
 	
-	private final DocumentRepository repository;
+	private final DocumentService service;
 	
-	DocumentController(DocumentRepository repository) {
-		this.repository = repository;
+	DocumentController(DocumentService service) {
+		this.service = service;
 	}
 	
 	@GetMapping()
 	List<Document> getAllDocuments() {
-		return repository.findAll();
+		return service.findAll();
 	}
 	
 	@GetMapping("/{id}")
-	Document getDocumentById(@PathVariable Long id) {
-		return repository.findById(id).orElseThrow(() -> new DocumentNotFoundException(id));
+	Document findById(@PathVariable Long id) {
+		return service.findById(id);
 	}
 
 	@PostMapping()
-	Document createDocument(@RequestBody Document newDocument) {
-		return repository.save(newDocument);
+	Document save(@RequestBody Document newDocument) {
+		return service.save(newDocument);
 	}
 	
 	@PutMapping("/{id}")
-	Document updateDocument(@RequestBody Document newDocument, @PathVariable Long id) {
-		return repository.findById(id)		
-				.map(document -> {
-					document.setTitle(newDocument.getTitle());
-					document.setCategory(newDocument.getCategory());
-					return repository.save(document);
-				})
-				.orElseGet(() -> {
-					return repository.save(newDocument);
-				});
+	Document updateDocument(@PathVariable Long id, @RequestBody Document newDocument) {
+		return service.update(id, newDocument);
 	}
 	
 	@DeleteMapping("/{id}")
 	void deleteDocument(@PathVariable Long id) {
-		repository.deleteById(id);
+		service.delete(id);
 	}
 
 
