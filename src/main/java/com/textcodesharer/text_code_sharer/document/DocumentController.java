@@ -23,8 +23,7 @@ public class DocumentController {
 	}
 	
 	@GetMapping()
-	List<Document> findAllDocuments() {
-		System.out.println("getAllDocuments");
+	List<Document> findAll() {
 		return service.findAll();
 	}
 	
