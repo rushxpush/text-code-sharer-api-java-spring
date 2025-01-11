@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController()
@@ -22,13 +23,21 @@ public class DocumentController {
 	}
 	
 	@GetMapping()
-	List<Document> getAllDocuments() {
+	List<Document> findAllDocuments() {
+		System.out.println("getAllDocuments");
 		return service.findAll();
 	}
 	
 	@GetMapping("/{id}")
 	Document findById(@PathVariable Long id) {
 		return service.findById(id);
+	}
+	
+	@GetMapping()
+	Document findByCategory(@RequestParam(value = "category",required = false) String category) {
+		System.out.println("findByCategory");
+		System.out.println("category: " + category);
+		return service.findByCategory(category);
 	}
 
 	@PostMapping()
@@ -45,6 +54,4 @@ public class DocumentController {
 	void deleteDocument(@PathVariable Long id) {
 		service.delete(id);
 	}
-
-
 }

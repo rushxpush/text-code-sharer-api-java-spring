@@ -11,7 +11,6 @@ public class DocumentServiceImpl implements DocumentService {
 	DocumentServiceImpl(DocumentRepository repository) {
 		this.repository = repository;
 	}
-	
 
 	@Override
 	public List<Document> findAll() {
@@ -21,6 +20,11 @@ public class DocumentServiceImpl implements DocumentService {
 	@Override
 	public Document findById(long id) {
 		return repository.findById(id).orElseThrow(() -> new DocumentNotFoundException(id));
+	}
+	
+	@Override
+	public Document findByCategory(String category) {
+		return repository.findByCategory(category).orElseThrow(() -> new DocumentNotFoundException("category", category));
 	}
 	
 	@Override
