@@ -7,7 +7,7 @@ public interface DocumentService {
 	
 	Document findById(long id);
 	
-	Document findByCategory(String category);
+	List<Document> findByCategory(String category);
 	
 	Document save(Document newDocument);
 	

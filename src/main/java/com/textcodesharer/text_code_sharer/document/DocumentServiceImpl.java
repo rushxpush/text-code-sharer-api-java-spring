@@ -23,7 +23,7 @@ public class DocumentServiceImpl implements DocumentService {
 	}
 	
 	@Override
-	public Document findByCategory(String category) {
+	public List<Document> findByCategory(String category) {
 		return repository.findByCategory(category).orElseThrow(() -> new DocumentNotFoundException("category", category));
 	}
 	

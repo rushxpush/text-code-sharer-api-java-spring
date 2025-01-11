@@ -32,9 +32,8 @@ public class DocumentController {
 		return service.findById(id);
 	}
 	
-	@GetMapping()
-	Document findByCategory(@RequestParam(value = "category",required = false) String category) {
-		System.out.println("findByCategory");
+	@GetMapping("/search")
+	List<Document> findByCategory(@RequestParam String category) {
 		System.out.println("category: " + category);
 		return service.findByCategory(category);
 	}
